@@ -5,12 +5,13 @@
 
 user table
 
-|제목|내용|설명|
-|------|---|---|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
-
+Nama Field | Tipe | Diperlukan | Deskripsi
+--- | --- | --- | ---
+from_name | String | Diperlukan | Nama Pengirim
+from_email | String (email address format) | Opsional | Email Penerima, jika kosong maka menggunakan email user yang terdaftar
+from_address | String | Diperlukan | Alamat Pengirim 
+from_phone | String | Diperlukan | Telefon Pengirim 
+from_zip_code | String | Opsional | Kode Pos Pengirim
 
 ```
 User.objects.values('id')
