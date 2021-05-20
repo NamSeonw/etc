@@ -1,0 +1,14 @@
+# django_orm
+
+- group by 후 sum 하는 법 
+> 만약 user 테이블에 group by 하고싶은 지역(addr)과 지역으로 group by 후 뽑아 합치고 싶은 선호도가 존재 한다고 가정하자.
+
+user table
+
+| Attempt | #1 | #2 |
+| :---: | :---: | :---: |
+| Seconds | 301 | 283 |
+
+```
+User.objects.values('id')
+```
