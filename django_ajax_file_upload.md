@@ -6,47 +6,44 @@
 ```
 function file_save() {
 
-      var file = $("#orgLicenseFile")[0].files[0];
-      var filename = file.name;
-      var filetype = file.type.split('/')[1];
-      var reader = new FileReader();
+var file = $("#orgLicenseFile")[0].files[0];
+var filename = file.name;
+var filetype = file.type.split('/')[1];
 
-      $("#filename").val(filename);
-      reader.onload = function (e) {
-          // 변환이 끝나면 reader.result로 옵니다.
-          var base64data = reader.result;
-          // 여기서 구조가 중요합니다.
-          // 구조는 「data: 파일 타입; base64, 데이터」입니다.
-          var data = base64data.split(',')[1];
-          //data가 이제 데이터 입니다.
-          //사실 ajax로 넘길때는 큰 사이즈 설정해서 데이터를 넘기면 빠르게 되는데
-          //예제이다보니 프로그래스바 구조를 나타내기 위해 문자 1개 단위로 보내겠습니다.
-          var sendsize = 5096;
-          var filelength = data.length;
-          var pos = 0;
+console.log(file)
+var reader = new FileReader();
 
-          console.log(data)
-          console.log(filetype)
+$("#filename").val(filename);
 
-          $.ajax({
-              type: 'POST',
-              dataType: 'json',
-              data: {
-                  data: data,
-                  filetype: filetype,
-                  csrfmiddlewaretoken : $.cookie('csrftoken'),
-              },
-              url: '{% url "file_upload" %}',
-              success: function (data) {
+reader.readAsDataURL(file)
 
-              },
-              error: function (jqXHR, textStatus, errorThrown) {
-              },
-              complete: function (jqXHR, textStatus) {
-              }
-          });
-      };
-  }
+reader.onload = function (e) {
+    // 변환이 끝나면 reader.result로 옵니다.
+    var base64data = reader.result;
+    var data = base64data.split(',')[1];
+
+    console.log(data)
+    console.log(filetype)
+
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            data: data,
+            filetype: filetype,
+            csrfmiddlewaretoken: $.cookie('csrftoken'),
+        },
+        url: '{% url "file_upload" %}',
+        success: function (data) {
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        },
+        complete: function (jqXHR, textStatus) {
+        }
+    });
+};
+}
 ```
 
 > html input file type 의 input 을 만들어 업로드 한다. 저장 이라는 버튼을 클릭하였을때 file을 읽어
