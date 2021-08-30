@@ -1,3 +1,13 @@
+### jellybean.vim color
+```
+https://www.vim.org/scripts/script.php?script_id=2555
+```
+
+- 에 가서 다운로드 링크 딴 후
+- /usr/share/vim/vim81/colors 에 jellybean.vim 이라는 이름으로 저장
+
+
+### vi ~/.vimrc
 ``` set number 				" 라인 번호를 붙임 
 set tabstop=4 			" 탭문자는 4컬럼 크기로 보여주기
 set shiftwidth=4 		"문단이나 라인을 쉬프트할 때 4컬럼씩 하기
