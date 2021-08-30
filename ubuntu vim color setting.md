@@ -1,5 +1,5 @@
 - set number 				" 라인 번호를 붙임
-`set tabstop=4 			" 탭문자는 4컬럼 크기로 보여주기`
+- set tabstop=4 			" 탭문자는 4컬럼 크기로 보여주기
 set shiftwidth=4 		"문단이나 라인을 쉬프트할 때 4컬럼씩 하기
 set autoindent 			" 자동 들여쓰기
 syntax on 				" 적절히 syntax에 다라 하이라이팅 해주기
