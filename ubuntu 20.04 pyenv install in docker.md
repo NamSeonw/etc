@@ -44,3 +44,11 @@ xz-utils tk-dev
 ```
 
 출처 https://nachwon.github.io/pyenv-virtualenv/
+
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv virtualenv-init -)"
+
+# eval "$(pyenv init -)"
+
+eval "$(pyenv init --path)"
+
