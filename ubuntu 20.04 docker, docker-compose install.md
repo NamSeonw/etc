@@ -11,8 +11,8 @@ bionic \
 stable"
 $ sudo apt-get update && sudo apt-get install docker-ce docker-ce-cli containerd.io  
 $ docker -v  
-$ sudo systemctl enable docker && service docker start  
-$ service docker status
+$ sudo systemctl enable docker && sudo service docker start  
+$ sudo service docker status
 ```
 
 2. docker-compose install
