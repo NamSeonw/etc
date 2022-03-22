@@ -52,3 +52,9 @@ eval "$(pyenv virtualenv-init -)"
 
 eval "$(pyenv init --path)"
 
+
+```
+$ pyenv install 3.7.9
+$ pyenv global 3.7.9
+```
+
