@@ -88,10 +88,16 @@ AUTH_USER_MODEL = "member.TbUser"
 python manage.py makemigrations member ( app name )
 ```
 
+5. Django create user
+> models 을 import하고 create user 로 진행 ⇒ django shell 진입 후 작업 ( python manage.py shell )
+```bash
+from member.models import TbUser
+user=TbUser.objects.create_user("seonwoo", password="1")
+user.save()
+```
 > 그 외 Django migrate 관련 명령어
 
 ```bash
 python manage.py showmigrations
 python manage.py migrate member ( app name )
 ```
-
