@@ -75,3 +75,6 @@ $ ls -lZd .
 
 로 명령어 실행 후 정상작동
 ls -lZd . 는 확인 명령어
+
+
+참고 ( https://baengsu.tistory.com/24 )
