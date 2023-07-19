@@ -70,6 +70,8 @@ drwxrwxr-x. vagrant vagrant uncinfined_u:object_r:user_home_t:s0 에서 user_hom
 
 ```
 $ sudo chcon -R -t httpd_sys_content_t .
+$ ls -lZd .
 ```
 
 로 명령어 실행 후 정상작동
+ls -lZd . 는 확인 명령어
