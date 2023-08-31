@@ -23,6 +23,18 @@ Remove test database and access to it? [Y/n] y
 Reload privilege tables now? [Y/n] y
 ```
 
+```
+MySQL 보안설정
+/usr/bin/mysql_secure_installation : 보안설정을 진행하기 위한 명령어
+Enter current password for root (enter for none): root 사용자의 비밀번호를 입력하라는 메시지, 설치 직후에는 비밀번호가 없으므로 그냥 엔터
+Set root password? [Y/n] : root 계정의 비밀번호를 설정하겠냐는 메시지 Y를 입력
+New password:(새비밀번호)
+Re-enter new password:(비밀번호 확인 작업 같은 비밀번호 작성)
+Remove anonymous users? [Y/n] : 익명 사용자로 접속하는 해킹 공격을 방지하기 위해서 익명 사용자의 로그인을 차단. ( Y 입력)
+Disallow root login remotely? [Y/n] : root사용자로 접속하는 해킹 공격을 방지하기 위해서 root사용자의 원격접속을 차단.
+Remove test database and access to it? [Y/n] : 사용하지 않는 test 데이터베이스를 삭제합니다. ( Y 입력)
+Reload privilege tables now? [Y/n] : 설정을 적용하기위해서 권한(preivilege) 테이블을 다시 불러옴. (Y 입력)
+```
 
 
 my.cnf
