@@ -24,6 +24,7 @@ Reload privilege tables now? [Y/n] y
 ```
 
 
+
 my.cnf
 ```
 $ sudo vi /eyc/mysql/my.cnf
