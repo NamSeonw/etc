@@ -21,9 +21,6 @@ $ vi ~/.bashrc
 
 내용 추가
 ```
-export PATH="~/.pyenv/bin:$PATH"
-eval "$(pyenv virtualenv-init -)"
-
 만약 ubuntu 20.04 라면
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
