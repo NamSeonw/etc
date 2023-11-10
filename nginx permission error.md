@@ -1,4 +1,4 @@
-![image](https://github.com/NamSeonw/etc/assets/54805517/6e5b92b1-0772-49b1-8191-1f4193788191)# Nginx permission error
+# Nginx permission error
 
 ## CASE 1
 
