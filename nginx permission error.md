@@ -83,7 +83,7 @@ ls -lZd . 는 확인 명령어
 
 참고 ( https://baengsu.tistory.com/24 )
 
-## CASE 1
+## CASE 2
 
 connect() to 127.0.0.1:8000 failed (13: Permission denied) while connecting to upstream 발생시,
 
