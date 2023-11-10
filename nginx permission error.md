@@ -1,6 +1,10 @@
-# Nginx permission error
+![image](https://github.com/NamSeonw/etc/assets/54805517/6e5b92b1-0772-49b1-8191-1f4193788191)# Nginx permission error
+
+## CASE 1
 
 서버 작업 중 
+
+open() "/home1/ncloud/workspace/kice/home/static/assets/vendor/kicedesign2021/images/layout/icon_login_pw.png" failed (13: Permission denied) 에러시,
 
 nginx static file에 대한 permission error 가 발생하였다.
 
@@ -78,3 +82,24 @@ ls -lZd . 는 확인 명령어
 
 
 참고 ( https://baengsu.tistory.com/24 )
+
+## CASE 1
+
+connect() to 127.0.0.1:8000 failed (13: Permission denied) while connecting to upstream 발생시,
+
+```
+$ getsebool -a | grep http
+```
+
+명령어 입력시,
+![image](https://github.com/NamSeonw/etc/assets/54805517/3844330c-1975-4914-bc6b-0a9768a3f660)
+
+위 사진처럼 httpd_can_network_connect --> off 로 나온다 이 설정을 on으로 변경해주면된다.
+
+```
+$ sudo setsebool httpd_can_network_connect on
+$ sudo setsebool httpd_can_network_connect on -P
+```
+
+로 해결완료!
+
