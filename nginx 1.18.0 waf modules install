@@ -1,0 +1,41 @@
+# nginx 1.18.0 waf modules install
+
+sudo su -> 처음에 su 권한을 주고 시작을 하던가 모든 명령어 앞에 sudo를 붙이던가 둘 중 택1 해야함
+이유는 모든 작업이 /usr/local/src/.... 밑의 경로에서 진행되기 때문에 /usr/local/src/ 의 기본소유자는 root이고 
+현재 작업 계정은 ubuntu이므로 쓰기 권한이 없다.
+
+나는 모든 명령어 앞에 sudo를 붙여서 진행
+
+> 다음 명령어 진행, nginx와 git이 설치되어있을시, 수행안해도 됌
+```
+$ sudo apt update
+$ apt install nginx=1.18.0-0ubuntu1.4
+$ sudo apt install nginx=1.18.0-0ubuntu1.4
+$ nginx -v
+$ sudo apt install git -y
+```
+
+```
+$ sudo git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity /usr/local/src/ModSecurity/
+$ cd /usr/local/src/ModSecurity/
+$ sudo apt install gcc make build-essential autoconf automake libtool libcurl4-openssl-dev liblua5.3-dev libfuzzy-dev ssdeep gettext pkg-config libpcre3 libpcre3-dev libxml2 libxml2-dev libcurl4 libgeoip-dev libyajl-dev doxygen -y
+$ sudo git submodule init
+$ sudo git config --global --add safe.directory /usr/local/src/ModSecurity
+$ sudo git submodule update
+$ sudo ./build.sh
+$ sudo ./configure
+$ sudo make
+$ sudo make install
+$ sudo git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git /usr/local/src/ModSecurity-nginx/
+$ cd /usr/local/src/
+$ sudo wget http://nginx.org/download/nginx-1.18.0.tar.gz
+$ sudo tar -xvzf nginx-1.18.0.tar.gz 
+$ cd nginx-1.18.0
+$ sudo cp /etc/apt/sources.list /etc/apt/sources.list~
+$ sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+$ sudo apt-get update
+$ sudo apt build-dep nginx && sudo apt install uuid-dev -y
+$ sudo ./configure --with-compat --add-dynamic-module=/usr/local/src/ModSecurity-nginx
+$ sudo make modules
+$ sudo cp objs/ngx_http_modsecurity_module.so /usr/share/nginx/modules/
+```
