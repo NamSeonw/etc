@@ -6,6 +6,7 @@ sudo su -> 처음에 su 권한을 주고 시작을 하던가 모든 명령어 �
 
 나는 모든 명령어 앞에 sudo를 붙여서 진행
 
+> nginx install & git install
 > 다음 명령어 진행, nginx와 git이 설치되어있을시, 수행안해도 됌
 ```
 $ sudo apt update
@@ -15,6 +16,7 @@ $ nginx -v
 $ sudo apt install git -y
 ```
 
+> nginx waf module install 
 ```
 $ sudo git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity /usr/local/src/ModSecurity/
 $ cd /usr/local/src/ModSecurity/
@@ -41,6 +43,7 @@ $ sudo cp objs/ngx_http_modsecurity_module.so /usr/share/nginx/modules/
 $ sudo vi /etc/nginx/nginx.conf
 ```
 
+> waf conf change
 > nginx.conf 에 추가
 ```
 change
@@ -55,6 +58,7 @@ modsecurity on;
 modsecurity_rules_file /etc/nginx/modsec/modsec-config.conf;
 ```
 
+> nginx conf change
 > /etc/nginx/nginx.conf
 ```
 user www-data;
@@ -153,6 +157,7 @@ $ sudo cp /usr/local/src/ModSecurity/modsecurity.conf-recommended /etc/nginx/mod
 $ sudo vi /etc/nginx/modsec/modsecurity.conf
 ```
 
+> waf 관련 conf change
 > modsecurity.conf 파일 변경
 ```
 SecRuleEngine On
