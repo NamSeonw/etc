@@ -1,3 +1,5 @@
+
+```
 server {
     #if ($host = kiccs.ssu.ac.kr) {
     #    return 301 https://$host$request_uri;
@@ -19,3 +21,4 @@ server {
 
 
 }
+```
