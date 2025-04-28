@@ -1,0 +1,137 @@
+[client]
+port          = 9306
+socket        = /tmp/mysql.sock
+ 
+[mysqld]
+user          = mysql
+port          = 9306
+socket        = /tmp/mysql.sock
+ 
+basedir       = /usr/local/mysql
+datadir       = /var/lib/mysql
+tmpdir          = /tmp
+
+bind-address    = 0.0.0.0
+ 
+## TIMEZONE SETTING
+default-time-zone = '+00:00'
+ 
+## CHARACTER SET
+character-set-server = utf8mb4
+collation-server = utf8mb4_unicode_ci
+init_connect="SET NAMES utf8mb4"
+init_connect="SET collation_connection=utf8mb4_unicode_ci"
+default_authentication_plugin = mysql_native_password
+ 
+## LOGGING CONFIG
+log_error = /data/log/mysql.err
+slow_query_log_file = /data/log/mysql-slow.log
+slow_query_log = 1
+long_query_time = 3
+general_log = 0
+#general_log_file = /data/log/general-log.log
+
+ 
+ 
+## SYSTEM CONFIG
+event_scheduler = ON
+local_infile = ON
+lock_wait_timeout = 31536000
+sql-mode = ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
+table_open_cache = 4000
+ 
+back_log = 50
+max_connections = 10000
+max_connect_errors = 10
+thread_cache_size = 8
+ 
+ 
+sort_buffer_size = 1M
+join_buffer_size = 1M
+read_buffer_size = 1M
+read_rnd_buffer_size = 2M
+ 
+max_allowed_packet = 1G
+ 
+max_heap_table_size = 16M
+tmp_table_size = 1073741824
+ 
+ 
+wait_timeout = 28800
+interactive_timeout = 28800
+ 
+lower_case_table_names = 1
+log_bin_trust_function_creators = 1
+ 
+explicit_defaults_for_timestamp = 1
+ 
+skip-name-resolve
+skip-external-locking
+ 
+ 
+## TRANSACTION ISOLATION CONFIG
+transaction-isolation = REPEATABLE-READ
+ 
+ 
+######################################
+# Replication Master Server (default)#
+######################################
+server-id              = 1
+# binary logging is required for replication
+log-bin = /data/log/mysql-bin
+binlog_format = row
+binlog_expire_logs_seconds = 604800   ## 7 days
+max_binlog_size = 1G
+log_slave_updates=1
+relay_log = /data/log/relay-bin
+relay_log_index = /data/log/relay-bin.index
+#read_only
+############################
+ 
+ 
+#################
+# MyISAM option #
+#################
+ 
+key_buffer_size = 32M
+#bulk_insert_buffer_size = 64M
+#myisam_sort_buffer_size = 128M
+#myisam_max_sort_file_size = 256G
+ 
+ 
+#################
+# innodb option #
+#################
+ 
+default-storage-engine = innodb
+innodb_buffer_pool_size = 16G
+innodb_data_file_path = ibdata1:1G;ibdata2:1G;ibdata3:10M:autoextend
+innodb_data_home_dir = /var/lib/mysql
+ 
+innodb_flush_log_at_trx_commit = 1
+innodb_log_buffer_size = 8M
+innodb_log_file_size = 512M
+innodb_log_group_home_dir = /var/lib/mysql
+innodb_undo_directory = /var/lib/mysql
+ 
+innodb_flush_method=O_DIRECT
+innodb_max_dirty_pages_pct = 90
+ 
+innodb_lock_wait_timeout = 50
+innodb_read_io_threads = 8                        # cpu core / 2
+innodb_write_io_threads = 8                        # cpu core / 2
+#innodb_force_recovery = 1
+
+[mysqldump]
+quick
+max_allowed_packet = 1G
+default-character-set = utf8mb4
+ 
+[mysql]
+no-auto-rehash
+ 
+[mysqlhotcopy]
+interactive-timeout
+ 
+[mysqld_safe]
+open-files-limit = 65536
